@@ -1,4 +1,11 @@
+basePath: /v1
+host: https://read-manager-main-api.onrender.com
 info:
-  contact: {}
+  contact:
+    email: gustavocs789@gmail.com
+    name: API Support
+  description: This is a API for a reader manager.
+  title: Read Manager Main API
+  version: "1.0"
 paths: {}
 swagger: "2.0"

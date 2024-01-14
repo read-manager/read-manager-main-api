@@ -14,20 +14,13 @@ import (
 	infra "github.com/read-manager/read-manager-main-api/internal/infra/http"
 )
 
-// @title Swagger Example API
+// @title Read Manager Main API
 // @version 1.0
-// @description This is a sample server Petstore server.
-// @termsOfService http://swagger.io/terms/
-
+// @description This is a API for a reader manager.
 // @contact.name API Support
-// @contact.url http://www.swagger.io/support
-// @contact.email support@swagger.io
-
-// @license.name Apache 2.0
-// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
-
-// @host petstore.swagger.io
-// @BasePath /v2
+// @contact.email gustavocs789@gmail.com
+// @host https://read-manager-main-api.onrender.com
+// @BasePath /v1
 func main() {
 	e := echo.New()
 	e.Use(middleware.Logger())

@@ -1,7 +1,15 @@
 {
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "This is a API for a reader manager.",
+        "title": "Read Manager Main API",
+        "contact": {
+            "name": "API Support",
+            "email": "gustavocs789@gmail.com"
+        },
+        "version": "1.0"
     },
+    "host": "https://read-manager-main-api.onrender.com",
+    "basePath": "/v1",
     "paths": {}
 }

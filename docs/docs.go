@@ -9,7 +9,10 @@ const docTemplate = `{
     "info": {
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
-        "contact": {},
+        "contact": {
+            "name": "API Support",
+            "email": "gustavocs789@gmail.com"
+        },
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",
@@ -19,12 +22,12 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "",
-	Host:             "",
-	BasePath:         "",
+	Version:          "1.0",
+	Host:             "https://read-manager-main-api.onrender.com",
+	BasePath:         "/v1",
 	Schemes:          []string{},
-	Title:            "",
-	Description:      "",
+	Title:            "Read Manager Main API",
+	Description:      "This is a API for a reader manager.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

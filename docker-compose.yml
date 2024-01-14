@@ -5,10 +5,10 @@ services:
     container_name: api
     build: .
     healthcheck:
-      test: curl -fsS localhost:3000/v1/healthcheck
+      test: curl -fsS localhost:${PORT}/v1/healthcheck
     environment:
       - LOAD_ENV_FILE=true
     ports:
-      - "3000:3000"
+      - "${PORT}:3000"
     volumes:
       - ./.env:/.env

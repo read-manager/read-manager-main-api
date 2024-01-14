@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -21,5 +22,5 @@ func main() {
 		}
 	}
 	http.SetRoutes(e)
-	e.Logger.Fatal(e.Start(os.Getenv("PORT")))
+	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", os.Getenv("PORT"))))
 }

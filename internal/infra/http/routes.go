@@ -3,8 +3,8 @@ package infra
 import (
 	"github.com/labstack/echo/v4"
 	echoSwagger "github.com/swaggo/echo-swagger"
-	_ "github.com/swaggo/echo-swagger/example/docs"
 
+	_ "github.com/read-manager/read-manager-main-api/docs"
 	health "github.com/read-manager/read-manager-main-api/internal/health/handlers"
 )
 

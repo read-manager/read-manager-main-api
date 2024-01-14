@@ -20,6 +20,8 @@
 *.key
 *.pub
 
+*.sh
+
 .env
 
 # Go workspace file

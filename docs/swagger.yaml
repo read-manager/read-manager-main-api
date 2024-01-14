@@ -1,4 +1,19 @@
 basePath: /v1
+definitions:
+  health.CheckResponse:
+    properties:
+      status:
+        type: string
+      system_info:
+        $ref: '#/definitions/health.System_info'
+    type: object
+  health.System_info:
+    properties:
+      environment:
+        type: string
+      version:
+        type: string
+    type: object
 host: https://read-manager-main-api.onrender.com
 info:
   contact:
@@ -7,5 +22,18 @@ info:
   description: This is a API for a reader manager.
   title: Read Manager Main API
   version: "1.0"
-paths: {}
+paths:
+  /v1/healthcheck:
+    get:
+      description: Check health of API
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/health.CheckResponse'
+      summary: Health check
+      tags:
+      - health
 swagger: "2.0"

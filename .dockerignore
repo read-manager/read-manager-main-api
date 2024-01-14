@@ -1,4 +1,6 @@
 *.yml
+*.md
+*.key
+*.pub
 .env
-.md
 .gitignore

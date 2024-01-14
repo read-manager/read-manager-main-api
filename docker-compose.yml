@@ -2,8 +2,7 @@ version: "3.9"
 
 services:
   api:
-    container_name: api
-    build: .
+    image: docker.io/gustavocs789/read-manager-main-api-signed:latest
     healthcheck:
       test: curl -fsS localhost:${PORT}/v1/healthcheck
     environment:

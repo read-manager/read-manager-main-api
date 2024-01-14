@@ -9,6 +9,6 @@ services:
     environment:
       - LOAD_ENV_FILE=true
     ports:
-      - "${PORT}:3000"
+      - "${PORT}:${PORT}"
     volumes:
       - ./.env:/.env

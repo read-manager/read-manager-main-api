@@ -56,7 +56,7 @@ jobs:
           KEY: ${{ secrets.SIGNING_SECRET }}
 
       - name: Sign container image with annotations from our environment
-        run: cosign sign --key cosign.key ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:latest
+        run: cosign sign --yes --key cosign.key ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:latest
         env:
           COSIGN_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
 

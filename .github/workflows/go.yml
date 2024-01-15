@@ -51,16 +51,12 @@ jobs:
 
       - name: Write signing key to disk (only needed for `cosign sign --key`)
         run: echo "${{ secrets.SIGNING_SECRET }}" > cosign.key
+        shell: bash
 
       - name: Sign container image with annotations from our environment
         env:
           COSIGN_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
-        run: |
-          cosign sign --key cosign.key \
-            -a "repo=${{ github.repository }}" \
-            -a "workflow=${{ github.workflow }}" \
-            -a "ref=${{ github.sha }}" \
-            ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:latest
+        run: cosign sign --key cosign.key ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:latest
 
   push_to_render:
     name: Deploy to render

@@ -56,7 +56,12 @@ jobs:
           KEY: ${{ secrets.SIGNING_SECRET }}
 
       - name: Sign container image with annotations from our environment
-        run: cosign sign --yes --key cosign.key ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:latest
+        run: |
+          cosign sign --yes --key cosign.key \
+            -a "repo=${{ github.repository }}" \
+            -a "workflow=${{ github.workflow }}" \
+            -a "ref=${{ github.sha }}" \
+            ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:latest
         env:
           COSIGN_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
 

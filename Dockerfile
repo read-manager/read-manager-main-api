@@ -5,7 +5,7 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -o api ./cmd/api
 
-FROM ${{ secrets.ContainerImage }}
+FROM alpine:3.16
 WORKDIR /
 COPY --from=build /app/api ./
 CMD ["./api"]

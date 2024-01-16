@@ -1,7 +1,6 @@
-name: DAST
+name: DAST Essentials
 on:
-    push:
-      branches: ["Veracode-Test"]
+  workflow_dispatch:
 
 jobs:
   veracode_security_scan:

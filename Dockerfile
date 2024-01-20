@@ -1,4 +1,4 @@
-FROM golang:1.21.6-alpine3.19 as build
+FROM cgr.dev/chainguard/go:latest as build
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download

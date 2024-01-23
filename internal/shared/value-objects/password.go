@@ -10,7 +10,7 @@ type password struct {
 func NewPassword(v *validator.Validator, value string) *password {
 	key := "password"
 	v.Check(value != "", key, "must be provided")
-	v.Check(len(value) > 8, key, "must contain at least 8 bytes long")
+	v.Check(len(value) >= 8, key, "must contain at least 8 bytes long")
 	if _, exists := v.Errors[key]; exists {
 		return nil
 	}

@@ -21,6 +21,7 @@ func NewUser(email string, password string, name string, nickname string) (IUser
 	v := validator.New()
 	emailVO := valueobjects.NewEmail(v, email)
     passwordVO := valueobjects.NewPassword(v, password)
+    userNameVO := valueobjects.NewUserName(v, name)
 	if !v.Valid() {
 		return nil, v.Errors
 	}
@@ -28,7 +29,7 @@ func NewUser(email string, password string, name string, nickname string) (IUser
         Id: uuid.New(),
         Email: emailVO.Get(),
         Password: passwordVO.Get(),
-        Name: name,
+        Name: userNameVO.Get(),
         Nickname: nickname,
     }, nil
 }

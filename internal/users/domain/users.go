@@ -2,6 +2,7 @@ package users
 
 import (
 	"github.com/google/uuid"
+
 	"github.com/read-manager/read-manager-main-api/internal/shared/validator"
 	valueobjects "github.com/read-manager/read-manager-main-api/internal/shared/value-objects"
 )
@@ -22,6 +23,7 @@ func NewUser(email string, password string, name string, nickname string) (IUser
 	emailVO := valueobjects.NewEmail(v, email)
     passwordVO := valueobjects.NewPassword(v, password)
     userNameVO := valueobjects.NewUserName(v, name)
+    nicknameVO := valueobjects.NewNickname(v, nickname)
 	if !v.Valid() {
 		return nil, v.Errors
 	}
@@ -30,6 +32,6 @@ func NewUser(email string, password string, name string, nickname string) (IUser
         Email: emailVO.Get(),
         Password: passwordVO.Get(),
         Name: userNameVO.Get(),
-        Nickname: nickname,
+        Nickname: nicknameVO.Get(),
     }, nil
 }

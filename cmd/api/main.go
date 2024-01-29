@@ -75,7 +75,6 @@ func openDB(dsn string) (*sql.DB, error) {
 	if maxIdleTimeErr != nil {
 		os.Exit(1)
 	}
-	//
     db.SetMaxOpenConns(maxOpenConns)
 	db.SetMaxIdleConns(maxIdleConns)
 	db.SetConnMaxIdleTime(maxIdleTime)

@@ -12,7 +12,7 @@ type IUser interface {}
 type users struct {
 	Id         uuid.UUID
 	Email      string
-	Password   string
+	Password   []byte
 	Name       string
 	Nickname   string
 	ReadPoints int64
@@ -30,7 +30,7 @@ func NewUser(email string, password string, name string, nickname string) (IUser
     return &users{
         Id: uuid.New(),
         Email: emailVO.Get(),
-        Password: passwordVO.Get(),
+        Password: passwordVO.GetHash(),
         Name: userNameVO.Get(),
         Nickname: nicknameVO.Get(),
     }, nil

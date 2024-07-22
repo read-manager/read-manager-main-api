@@ -7,12 +7,12 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-type password struct {
+type Password struct {
 	plaintext *string
 	hash      []byte
 }
 
-func NewPassword(v *validator.Validator, value string) *password {
+func NewPassword(v *validator.Validator, value string) *Password {
 	key := "password"
 	v.Check(value != "", key, "must be provided")
 	v.Check(len(value) >= 8, key, "must contain at least 8 bytes long")
@@ -25,14 +25,14 @@ func NewPassword(v *validator.Validator, value string) *password {
 		v.AddError("password", "invalid password")
 		return nil
 	}
-	return &password{plaintext: &value, hash: hash}
+	return &Password{plaintext: &value, hash: hash}
 }
 
-func (p *password) GetHash() []byte {
+func (p *Password) GetHash() []byte {
 	return p.hash
 }
 
-func (p *password) Matches(plaintextPassword string) (bool, error) {
+func (p *Password) Matches(plaintextPassword string) (bool, error) {
 	err := bcrypt.CompareHashAndPassword(p.hash, []byte(plaintextPassword))
 	if err != nil {
 		switch {

@@ -2,7 +2,7 @@ package users
 
 import (
 	"time"
-
+	
 	"github.com/google/uuid"
 
 	"github.com/read-manager/read-manager-main-api/internal/shared/validator"
@@ -17,7 +17,7 @@ type User struct {
 	Name       string
 	Nickname   string
 	ReadPoints int64
-    CreatedAt time.Time
+	CreatedAt time.Time
     UpdatedAt time.Time
 }
 
@@ -28,7 +28,7 @@ func NewUser(email string, password string, name string, nickname string) (*User
     userNameVO := valueobjects.NewUserName(v, name)
     nicknameVO := valueobjects.NewNickname(v, nickname)
 	if !v.Valid() {
-		return &User{}, v.Errors
+		return nil, v.Errors
 	}
     return &User{
         Id: uuid.New(),

@@ -9,21 +9,21 @@ import (
 )
 
 type IUsersRepository interface {
-    Insert(user users.User) error
+	Insert(user users.User) error
 }
 
 type usersRepository struct {
-    db *sql.DB
+	db *sql.DB
 }
 
-func NewUsersRepository(db *sql.DB) IUsersRepository {
-    return &usersRepository{
-        db,
-    }
+func NewUsersRepository(db *sql.DB) *usersRepository {
+	return &usersRepository{
+		db,
+	}
 }
 
 func (ur *usersRepository) Insert(user users.User) error {
-    query := `
+	query := `
         INSERT INTO users (
             id,
             name,
@@ -43,19 +43,19 @@ func (ur *usersRepository) Insert(user users.User) error {
         RETURNING
             created_at
     `
-    args := []any{ 
-        user.Id, 
-        user.Name,
-        user.Email,
-        user.Password.GetHash(),
-        user.Nickname,
-        0,
-    }
-    ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
-    defer cancel()
-    err := ur.db.QueryRowContext(ctx, query, args...).Scan(&user.CreatedAt)
-    if err != nil {
-        return err
-    }
-    return nil
+	args := []any{
+		user.Id,
+		user.Name,
+		user.Email,
+		user.Password.GetHash(),
+		user.Nickname,
+		0,
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+	err := ur.db.QueryRowContext(ctx, query, args...).Scan(&user.CreatedAt)
+	if err != nil {
+		return err
+	}
+	return nil
 }
